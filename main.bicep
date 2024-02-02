@@ -18,7 +18,7 @@ param subnetPrefix string = '10.0.0.0/24'
 param someParameter string = 'someValue'
 
 // Importing the three existing Bicep files
-module functionApp './function_storage.bicep' = {
+module functionApp './func_storage.bicep' = {
   name: 'functionAppModule'
   params: {
     storageAccountName: storageAccountName
@@ -27,7 +27,7 @@ module functionApp './function_storage.bicep' = {
   }
 }
 
-module staticWebApp './staticwebapp.bicep' = {
+module staticWebApp './blazorswa.bicep' = {
   name: 'staticWebAppModule'
   params: {
     location: location
@@ -51,7 +51,7 @@ module vnet './vnet.bicep' = {
 
 // Outputs from the three modules
 output functionAppUrl string = functionApp.outputs.functionAppUrl
-output staticWebAppUrl string = staticWebApp.outputs.asw_BlazorApp.properties.defaultHostName
+
 output vnetId string = vnet.outputs.vnetId
 
 // Additional outputs specific to your deployment
